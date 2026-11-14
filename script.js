@@ -130,13 +130,17 @@ function newGame() {
 }
 
 function createCharacter() {
-    const name = document.getElementById("playerName")
-        .value.trim();
+    const name = document.getElementById("playerName").value.trim();
 
-    if (!name) {
-        alert("Digite seu nome primeiro!");
+    const forbiddenNames = ["thierry", "alan"];
+
+    if (forbiddenNames.includes(name.toLowerCase())) {
+        alert("Coloca teu nome real seu baitola!");
         return;
     }
+
+    // O restante do código original continua aqui...
+}
 
     player.name = name;
     showPetShop();
