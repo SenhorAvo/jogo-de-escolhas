@@ -2,76 +2,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ESCOLHAS</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #101116;
-    color: white;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.container {
-    padding: 30px;
-}
-
-h1 {
-    font-size: 65px;
-    letter-spacing: 8px;
-    margin-bottom: 15px;
-}
-
-p {
-    color: #aaa;
-    margin-bottom: 35px;
-}
-
-button {
-    background: #e0a526;
-    border: none;
-    padding: 16px 55px;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ffc64b;
-    transform: scale(1.05);
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESCOLHAS — Uma vida duvidosa</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
-    <h1>ESCOLHAS</h1>
-    <p>Suas decisões podem mudar tudo.</p>
+    <main class="game-container">
 
-    <button onclick="iniciarJogo()">JOGAR</button>
-</div>
+        <header class="header">
+            <div class="logo">ESCOLHAS<span>.</span></div>
+            <div class="subtitle">UMA VIDA DE DECISÕES DUVIDOSAS</div>
+        </header>
 
-<script>
-function iniciarJogo() {
-    alert("Prepare-se. Sua história está começando...");
-}
-</script>
+        <section id="menu" class="screen">
+            <div class="menu-content">
+                <div class="decoration">?</div>
+                <h1>ESCOLHAS</h1>
+                <p>Suas decisões. Suas consequências. Seus problemas.</p>
 
+                <button class="primary-button" onclick="newGame()">
+                    NOVO JOGO
+                </button>
+
+                <button id="continueButton" class="secondary-button"
+                    onclick="continueGame()" hidden>
+                    CONTINUAR
+                </button>
+
+                <button class="secondary-button" onclick="showCredits()">
+                    CRÉDITOS
+                </button>
+            </div>
+        </section>
+
+        <section id="character" class="screen" hidden>
+            <h2>ANTES DE COMEÇAR...</h2>
+            <p>Como devemos chamar essa criatura?</p>
+
+            <input id="playerName" maxlength="20"
+                placeholder="Digite seu nome">
+
+            <button class="primary-button" onclick="createCharacter()">
+                CONFIRMAR
+            </button>
+        </section>
+
+        <section id="game" class="screen" hidden>
+
+            <div class="stats">
+                <div class="stat">💰 Dinheiro: <span id="money">0</span></div>
+                <div class="stat">🍔 Fome: <span id="hunger">0</span></div>
+                <div class="stat">❤️ Saúde: <span id="health">0</span></div>
+            </div>
+
+            <div class="chapter" id="chapter">CAPÍTULO 01</div>
+
+            <div class="story-card">
+                <h2 id="storyTitle"></h2>
+                <p id="storyText"></p>
+            </div>
+
+            <div id="options" class="options"></div>
+
+            <div id="feedback" class="feedback" hidden>
+                <h3 id="feedbackTitle"></h3>
+                <p id="feedbackText"></p>
+                <button class="primary-button" onclick="nextScene()">
+                    CONTINUAR
+                </button>
+            </div>
+
+        </section>
+
+        <footer>
+            ESCOLHAS © 2026 — BOA SORTE. VOCÊ VAI PRECISAR.
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
